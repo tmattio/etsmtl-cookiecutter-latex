@@ -27,6 +27,7 @@ help:
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
 clean:
+	rm -rf build/
 	find . -name '*.toc' -exec rm -f {} +
 	find . -name '*.aux' -exec rm -f {} +
 	find . -name '*.log' -exec rm -f {} +
@@ -36,4 +37,5 @@ clean:
 	find . -name '*.fdb_latexmk' -exec rm -f {} +
 
 build:
-	lualatex tex/main.tex {{cookiecutter.repo_name}}.pdf
+	mkdir -p build/tex
+	latexmk -output-directory=build/ -pdf etsmtl-report.tex

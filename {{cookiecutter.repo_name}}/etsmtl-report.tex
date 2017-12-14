@@ -1,0 +1,67 @@
+\documentclass[10pt]{etsmtl-report}
+
+\title{ {{-cookiecutter.title-}} }
+\author{ {{-cookiecutter.first_name}} {{cookiecutter.last_name-}} }
+\date{\today}
+\def \coursename { {{-cookiecutter.course_name-}} }
+\def \coursecode { {{-cookiecutter.course_code-}} }
+\def \school { {{-cookiecutter.school-}} }
+\def \studentid { {{-cookiecutter.student_id-}} }
+\def \firstname { {{-cookiecutter.first_name-}} }
+\def \lastname { {{-cookiecutter.last_name-}} }
+\def \professor { {{-cookiecutter.professor-}} }
+
+{% raw %}\makeatletter
+\newcommand{\putindeepbox}[2][0.7\baselineskip]{{
+    \setbox0=\hbox{#2}%
+    \setbox0=\vbox{\noindent\hsize=\wd0\unhbox0}
+    \@tempdima=\dp0
+    \advance\@tempdima by \ht0
+    \advance\@tempdima by -#1\relax
+    \dp0=\@tempdima
+    \ht0=#1\relax
+    \box0
+}}
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\begin{document}
+
+\begin{titlepage}
+  \centering
+  \vspace*{0.5 cm}
+  \includegraphics[scale = 0.60]{ets-logo}\\[1.0 cm]
+  \textsc{ \LARGE \school}\\[2.0 cm]
+  \textsc{\Large \coursecode}\\[0.5 cm]
+  \textsc{\large \coursename}\\[0.5 cm]
+  \rule{\linewidth}{0.2 mm} \\[0.4 cm]
+  { \huge \bfseries \thetitle}\\
+  \rule{\linewidth}{0.2 mm} \\[1.5 cm]
+
+  \begin{minipage}{0.4\textwidth}
+    \begin{flushleft}
+      \emph{Auteurs:}\\
+      \firstname \thinspace \textsc{\lastname}\\
+      \end{flushleft}
+      \end{minipage}~
+      \begin{minipage}{0.4\textwidth}
+      \begin{flushright}
+      \emph{Numéros étudiants:} \\
+      \studentid	\\
+    \end{flushright}
+  \end{minipage}\\[2 cm]
+
+  \emph{Remis à:} \professor\\
+  {\thedate}\\[2 cm]
+\end{titlepage}
+
+\cleardoublepage
+
+\tableofcontents
+\include{tex/1-introduction}
+\include{tex/2-conclusion}
+
+\end{document}
+{% endraw %}
